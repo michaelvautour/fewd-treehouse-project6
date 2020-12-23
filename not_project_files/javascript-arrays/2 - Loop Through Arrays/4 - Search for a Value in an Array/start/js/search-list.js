@@ -17,7 +17,10 @@ const inStock = [
     'tofu', 
     'limes', 
     'cucumbers'];
-const search = prompt('Search for a product.');
+
+
+const search = prompt('Search for a product.')
+
 let message;
 
 // This will set the array to lower case to allow for a lower case to
@@ -36,8 +39,11 @@ function capitalFirst(string) {
 }
 
 // This will compare the users search criteria against the array for a match
-if (inStock.includes(search.toLowerCase())) {
-    message = `Your item <strong>${capitalFirst(search)}</strong> is in stock!`
+
+if (!search) {
+    message =`<strong>In Stock:</strong> ${inStock.join(', ')}`;
+} else if (inStock.includes(search.toLowerCase())) {
+    message = `Your item <strong>${capitalFirst(search)}</strong> is in stock! It's #${inStock.indexOf(search.toLowerCase()) +1} on the list`
 } else {
     message = `Your item <strong>${capitalFirst(search)}</strong> is not in stock!"`
 }
