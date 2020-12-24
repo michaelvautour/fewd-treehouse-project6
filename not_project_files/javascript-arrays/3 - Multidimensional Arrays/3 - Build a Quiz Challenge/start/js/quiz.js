@@ -17,6 +17,9 @@ let correctAnswers = 0;
         answered questions increments by 1
 */
 
+let rightAnswers = [];
+let wrongAnswers = [];
+
 for ( let i = 0; i < questions.length; i++ ) {
   let question = questions[i][0];
   let answer = questions[i][1];
@@ -24,15 +27,32 @@ for ( let i = 0; i < questions.length; i++ ) {
 
   if (response === answer) {
     correctAnswers++;
+    rightAnswers.push(question); 
+  } else {
+    wrongAnswers.push(question);
   }
 }
 
+function createListItems(arr) {
+  let items = '';
+  for (let i = 0; i < arr.length; i++) {
+    items += `<li>${arr[i]}</li>`;
+  }
+  return items
+}
 
 // 4. Display the number of correct answers to the user
 
 let html = `
 <h1>You got ${correctAnswers} question(s) correct </h1>
-<p></p>
+<p>You got these questions right:</p>
+<ol>
+${createListItems(rightAnswers)}
+</ol>
+<p>You got these questions wrong</p>
+<ol>
+${createListItems(wrongAnswers)}
+</ol>
 `
 
 document.querySelector('main').innerHTML = html;
