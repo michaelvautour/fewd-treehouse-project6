@@ -6,3 +6,7 @@ const person = {
   isStudent: true,
   skills: ['JavaScript', 'HTML', 'CSS']
 };
+
+for (let prop in person) {
+  console.log(`${prop}: ${person[prop]}`);
+}
