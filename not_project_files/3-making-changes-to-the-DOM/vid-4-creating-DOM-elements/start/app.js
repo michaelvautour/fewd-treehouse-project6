@@ -1,9 +1,18 @@
+// 1a) to show & hide list
 const toggleList = document.getElementById('toggleList');
 const listDiv = document.querySelector('.list');
-const input = document.querySelector('input.description');
-const p = document.querySelector('p.description');
-const button = document.querySelector('button.description');
 
+// 2a) To change paragraph name
+const descriptionInput = document.querySelector('input.description');
+const descriptionP = document.querySelector('p.description');
+const descriptionButton = document.querySelector('button.description');
+
+// 3a) To add new paragraph name
+
+const addItemInput = document.querySelector('input.addItemInput');
+const addItemButton = document.querySelector('button.addItemButton');
+
+// 1b) function to trigger show/hide
 toggleList.addEventListener('click', () => {
   if (listDiv.style.display == 'none') {
     toggleList.textContent = 'Hide list';
@@ -14,7 +23,25 @@ toggleList.addEventListener('click', () => {
   }                         
 });
 
-button.addEventListener('click', () => {
-  p.innerHTML = input.value + ':';
+// 2b) to replace html in paragraph name
+descriptionButton.addEventListener('click', () => {
+  descriptionP.innerHTML = descriptionInput.value + ':';
+  descriptionInput.value = '';
+});
+
+// 3b) target UL elements, storing a variable to create new list items
+// storing the input value into the li tag, and then appending it into the list
+// in the end clearing the input field to allow for more entries
+addItemButton.addEventListener('click', () => {
+  let ul = document.getElementsByTagName('ul')[0];
+  // console.log(ul);
+  let li = document.createElement('li');
+  // console.log(li);
+
+  li.textContent = addItemInput.value;
+  console.log(li.textContent);
+
+  ul.appendChild(li);
+  addItemInput.value = '';
 });
 
