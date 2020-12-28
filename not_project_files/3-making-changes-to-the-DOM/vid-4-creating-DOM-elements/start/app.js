@@ -12,6 +12,10 @@ const descriptionButton = document.querySelector('button.description');
 const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 
+// 4a Remove item
+const removeItemButton = document.querySelector('button.removeItemButton');
+
+
 // 1b) function to trigger show/hide
 toggleList.addEventListener('click', () => {
   if (listDiv.style.display == 'none') {
@@ -34,14 +38,15 @@ descriptionButton.addEventListener('click', () => {
 // in the end clearing the input field to allow for more entries
 addItemButton.addEventListener('click', () => {
   let ul = document.getElementsByTagName('ul')[0];
-  // console.log(ul);
   let li = document.createElement('li');
-  // console.log(li);
-
   li.textContent = addItemInput.value;
-  console.log(li.textContent);
-
   ul.appendChild(li);
   addItemInput.value = '';
+});
+
+removeItemButton.addEventListener('click', () => {
+  let ul = document.getElementsByTagName('ul')[0];
+  let li = document.querySelector('li:last-child');
+  ul.removeChild(li);
 });
 
