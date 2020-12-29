@@ -7,6 +7,20 @@ const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 const removeItemButton = document.querySelector('button.removeItemButton');
 
+const listItems = document.getElementsByTagName('li')
+
+for (let i = 0; i < listItems.length; i++) {
+  let listItem = listItems[i];
+  
+  listItem.addEventListener("mouseover", () => {
+    listItem.textContent = listItem.textContent.toUpperCase();
+  });
+  
+  listItem.addEventListener("mouseout", () => {
+    listItem.textContent = listItem.textContent.toLowerCase();
+  });
+}
+
 toggleList.addEventListener('click', () => {
   if (listDiv.style.display == 'none') {
     toggleList.textContent = 'Hide list';
@@ -35,7 +49,4 @@ removeItemButton.addEventListener('click', () => {
   let li = document.querySelector('li:last-child');
   ul.removeChild(li);
 });
-  
-  
-  
   
