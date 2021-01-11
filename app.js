@@ -12,7 +12,8 @@ const phrases = [
 "Hello World is simple but effective"
 ];
 
-const gameLength = phrases.length;
+// const gameLength = phrases.length;
+// const indexOfPhrase = Math.floor(Math.random() * Math.floor(gameLength));
 
 missedLetter = 0;
 
@@ -23,18 +24,31 @@ function getRandomInt(max) {
 // listen for the start game button to be pressed
 gameStart.addEventListener('click', (e) => {
     document.getElementById('overlay').style.display = 'none';
-    getRandomPhraseAsArray;
 });
 
 //returns a random phrase from an array for the game
-const getRandomPhraseAsArray = arr => {
-    const randomPhrase = getRandomInt(gameLength);
-    return randomPhrase;
+const getRandomPhraseAsArray = phrases => {
+    const gameLength = phrases.length;
+    const indexOfPhrase = Math.floor(Math.random() * Math.floor(gameLength));
+    console.log(indexOfPhrase);
 }
 
 // adds the letters of a string to the display
-const addPhraseToDisplay = arr => {
+const addPhraseToDisplay = phrases => {
+    for (let i = 0; i < phrase.length; i++){
+        let ul = document.getElementsByTagName('ul')[0]
+        let li = document.createElemement('li')
+        ul.appendChild(li);
 
+        if (character = letter) {
+            // this would create the LI with a class of letter and 1 char
+            let someClass= letter;
+    }
+        else {
+            // this would create the LI with a class of space and an empty string char
+
+            let someClass = space
+        }
 }
 
 // check if a letter is in the phrase
