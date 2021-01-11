@@ -31,10 +31,11 @@ const getRandomPhraseAsArray = phrases => {
     const gameLength = phrases.length;
     const indexOfPhrase = Math.floor(Math.random() * Math.floor(gameLength));
     console.log(indexOfPhrase);
+    return indexOfPhrase;
 }
 
 // adds the letters of a string to the display
-const addPhraseToDisplay = phrases => {
+function addPhraseToDisplay() {
     for (let i = 0; i < phrase.length; i++){
         let ul = document.getElementsByTagName('ul')[0]
         let li = document.createElemement('li')
