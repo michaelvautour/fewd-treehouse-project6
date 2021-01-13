@@ -21,7 +21,7 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-// listen for the start game button to be pressed
+// listen for the start game button to be pressed, update so main screen disappears
 gameStart.addEventListener('click', (e) => {
     document.getElementById('overlay').style.display = 'none';
 });
