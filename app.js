@@ -27,12 +27,29 @@ gameStart.addEventListener('click', (e) => {
 });
 
 //returns a random phrase from an array for the game
-const getRandomPhraseAsArray = phrases => {
+const getRandomPhraseAsArray = arr => {
     const gameLength = phrases.length;
     const indexOfPhrase = Math.floor(Math.random() * Math.floor(gameLength));
     console.log(indexOfPhrase);
     return indexOfPhrase;
 }
+
+function testAdd() {
+// create li element
+    let createLi = document.createElement('li')
+//creates location where I reference later to insert li item
+    let ul = document.querySelector('ul')
+//adds the class specific reference to the Li item that was created
+    createLi.classList.add("letter")
+// gets the array valley to make the phrase randomized 
+    let indexPhrase = getRandomPhraseAsArray()
+//takes the array values and moves it into the List item
+    createLi.textContent = phrases[indexPhrase]
+// takes the full value list item (dom) and inserts it into the HTML document
+    ul.appendChild(createLi)
+    return createLi
+}
+
 
 // adds the letters of a string to the display
 function addPhraseToDisplay() {
@@ -51,7 +68,7 @@ function addPhraseToDisplay() {
             let someClass = space
         }
 }
-
+}
 // check if a letter is in the phrase
 const checkLetter = button => {
 
@@ -65,4 +82,4 @@ const checkWin = () => {
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', () => {
 
-})
+});
