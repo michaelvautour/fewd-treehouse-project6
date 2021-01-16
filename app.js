@@ -1,6 +1,7 @@
 console.log('app.js in project 6 test')
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
+const ul = document.querySelector('ul')
 
 const gameStart = document.querySelector('.btn__reset');
 
@@ -12,9 +13,6 @@ const phrases = [
 "Hello World is simple but effective"
 ];
 
-// const gameLength = phrases.length;
-// const indexOfPhrase = Math.floor(Math.random() * Math.floor(gameLength));
-
 missedLetter = 0;
 
 function getRandomInt(max) {
@@ -24,51 +22,35 @@ function getRandomInt(max) {
 // listen for the start game button to be pressed, update so main screen disappears
 gameStart.addEventListener('click', (e) => {
     document.getElementById('overlay').style.display = 'none';
+    addPhraseToDisplay()
 });
 
 //returns a random phrase from an array for the game
 const getRandomPhraseAsArray = arr => {
     const gameLength = phrases.length;
-    const indexOfPhrase = Math.floor(Math.random() * Math.floor(gameLength));
+    indexOfPhrase = getRandomInt(gameLength)
     console.log(indexOfPhrase);
-    return indexOfPhrase;
+    let charSplit = phrases[indexOfPhrase]
+    let splitPhrase = charSplit.split('')
+    return splitPhrase;
 }
 
-function testAdd() {
-// create li element
-    let createLi = document.createElement('li')
-//creates location where I reference later to insert li item
-    let ul = document.querySelector('ul')
-//adds the class specific reference to the Li item that was created
-    createLi.classList.add("letter")
-// gets the array valley to make the phrase randomized 
-    let indexPhrase = getRandomPhraseAsArray()
-//takes the array values and moves it into the List item
-    createLi.textContent = phrases[indexPhrase]
-// takes the full value list item (dom) and inserts it into the HTML document
-    ul.appendChild(createLi)
-    return createLi
-}
-
-
-// adds the letters of a string to the display
 function addPhraseToDisplay() {
-    for (let i = 0; i < phrase.length; i++){
-        let ul = document.getElementsByTagName('ul')[0]
-        let li = document.createElemement('li')
-        ul.appendChild(li);
-
-        if (character = letter) {
-            // this would create the LI with a class of letter and 1 char
-            let someClass= letter;
-    }
-        else {
-            // this would create the LI with a class of space and an empty string char
-
-            let someClass = space
+    const chars = getRandomPhraseAsArray()
+    for (i = 0; i < chars.length; i++) {
+        let char = chars[i]
+        let createLi = document.createElement('li')
+        createLi.textContent = char
+            if (char === ' ') {
+                createLi.classList.add('space')
+            } else {
+                createLi.classList.add('letter')
+            }
+        ul.appendChild(createLi)
         }
-}
-}
+    }
+
+
 // check if a letter is in the phrase
 const checkLetter = button => {
 
