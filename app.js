@@ -1,4 +1,3 @@
-console.log('app.js in project 6 test')
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const ul = document.querySelector('ul')
@@ -35,7 +34,6 @@ gameStart.addEventListener('click', (e) => {
 const getRandomPhraseAsArray = arr => {
     const gameLength = arr.length;
     indexOfPhrase = getRandomInt(gameLength);
-    console.log(indexOfPhrase);
     let charSplit = arr[indexOfPhrase];
     let splitPhrase = charSplit.split('');
     return splitPhrase;
@@ -74,9 +72,7 @@ function checkLetter(selectedChar) {
 // check if the game has been won or lost 
 const checkWin = () => {
     let letterNum = document.getElementsByClassName('letter')
-    console.log(letterNum.length);
     let showNum = document.getElementsByClassName('show')
-    console.log(showNum.length);
     if (letterNum.length === showNum.length) {
         overlay.classList.add('win');
         overlay.style.display = "flex";
@@ -98,10 +94,8 @@ qwerty.addEventListener('click', (e) => {
         pButton.classList.add('chosen');
         let checkedLetter = checkLetter(selectedChar);
             if ( checkedLetter === selectedChar ) {
-                console.log("you got a letter");
                 checkWin();
             } else {
-                console.log("Non-matching letter selected is: " + selectedChar);
                 heartLoss[missedLetter].src="images/lostHeart.png";
                 missedLetter +=1;
                 checkWin();
