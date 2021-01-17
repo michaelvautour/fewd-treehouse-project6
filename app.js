@@ -8,6 +8,8 @@ const heartLoss = document.querySelectorAll("img");
 const overlay = document.getElementById('overlay');
 const h2 = document.getElementsByClassName('title')[0];
 
+//Game questions, add/edit additional ones as needed
+//game is index so it will handle any amount of additional phrases
 const phrases = [
 "we are the children of humanity",
 "barely competent and paranoid",
@@ -31,16 +33,16 @@ gameStart.addEventListener('click', (e) => {
 
 //returns a random phrase from an array for the game
 const getRandomPhraseAsArray = arr => {
-    const gameLength = phrases.length;
+    const gameLength = arr.length;
     indexOfPhrase = getRandomInt(gameLength);
     console.log(indexOfPhrase);
-    let charSplit = phrases[indexOfPhrase];
+    let charSplit = arr[indexOfPhrase];
     let splitPhrase = charSplit.split('');
     return splitPhrase;
 }
 
 function addPhraseToDisplay() {
-    const chars = getRandomPhraseAsArray()
+    const chars = getRandomPhraseAsArray(phrases)
     for (i = 0; i < chars.length; i++) {
         let char = chars[i];
         let createLi = document.createElement('li');
@@ -58,7 +60,6 @@ function addPhraseToDisplay() {
 function checkLetter(selectedChar) {
     let match = null;
     const letters = ul.children;
-    console.log(letters);
     for (i = 0; i < letters.length; i++) {
         let letter = letters[i];
 
@@ -77,14 +78,15 @@ const checkWin = () => {
     let showNum = document.getElementsByClassName('show')
     console.log(showNum.length);
     if (letterNum.length === showNum.length) {
-        console.log("I win!!!");
-    
+        overlay.classList.add('win');
+        overlay.style.display = "flex";
+        h2.textContent = "Congrats! You Win! Refresh the browser to play again!";
+
     } else if (missedLetter > 4) {
         overlay.classList.add('lose');
         overlay.style.display = "flex";
         h2.textContent = "Sorry, you lose. Refresh the browser to play again!";
     }
-// code to check the letter / show variable lengths if they are the same = win
 }
 
 // listen for the onscreen keyboard to be clicked
