@@ -1,10 +1,12 @@
 console.log('app.js in project 6 test')
-// const qwerty = document.getElementsByClassName('keyrow');
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const ul = document.querySelector('ul')
 const gameStart = document.querySelector('.btn__reset');
-const button = document.getElementsByTagName('button')
+const button = document.getElementsByTagName('button');
+const heartLoss = document.querySelectorAll("img");
+const overlay = document.getElementById('overlay');
+const h2 = document.getElementsByClassName('title')[0];
 
 const phrases = [
 "we are the children of humanity",
@@ -52,7 +54,6 @@ function addPhraseToDisplay() {
         }
     }
 
-
 // check if a letter is in the phrase
 function checkLetter(selectedChar) {
     let match = null;
@@ -67,12 +68,23 @@ function checkLetter(selectedChar) {
         }
     }
     return match;
-
 }
 
 // check if the game has been won or lost 
 const checkWin = () => {
-// code to validate if missedLetter > 4, go to gameove
+    let letterNum = document.getElementsByClassName('letter')
+    console.log(letterNum.length);
+    let showNum = document.getElementsByClassName('show')
+    console.log(showNum.length);
+    if (letterNum === showNum) {
+        console.log("I win!!!");
+    }
+
+    if (missedLetter > 4) {
+        overlay.classList.add('lose');
+        overlay.style.display = "flex";
+        h2.textContent = "Sorry, you lose. Refresh the browser to play again!";
+    }
 // code to check the letter / show variable lengths if they are the same = win
 }
 
@@ -86,10 +98,12 @@ qwerty.addEventListener('click', (e) => {
         let checkedLetter = checkLetter(selectedChar);
             if ( checkedLetter === selectedChar ) {
                 console.log("you got a letter");
+                checkWin();
             } else {
-                console.log("Wrong letter in Event Listener" + selectedChar);
+                console.log("Non-matching letter selected is: " + selectedChar);
+                heartLoss[missedLetter].src="images/lostHeart.png";
                 missedLetter +=1;
-                // code here to remove a heart
+                checkWin();
             }
 }
 });
