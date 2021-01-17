@@ -6,11 +6,11 @@ const gameStart = document.querySelector('.btn__reset');
 const button = document.getElementsByTagName('button')
 
 const phrases = [
-"We are the children of humanity",
-"Barely competent and paranoid",
-"Battlestar galactica",
-"You keep my planes flying",
-"So say we all"
+"we are the children of humanity",
+"barely competent and paranoid",
+"battlestar galactica",
+"you keep my planes flying",
+"so say we all"
 ];
 
 missedLetter = 0;
@@ -53,34 +53,44 @@ function addPhraseToDisplay() {
 
 
 // check if a letter is in the phrase
-function checkLetter() {
+function checkLetter(selectedChar) {
     let match = null;
     const letters = ul.children;
     console.log(letters);
     for (i = 0; i < letters.length; i++) {
         let letter = letters[i];
-        console.log(letter);
-        if ("s" | "a" === letter.textContent ){
+
+        if (selectedChar === letter.textContent ){
             letter.classList.add('show');
             match = letter.textContent;
-            return match;
         }
     }
+    return match;
+
 }
 
 // check if the game has been won or lost 
 const checkWin = () => {
-
+// code to validate if missedLetter > 4, go to gameove
+// code to check the letter / show variable lengths if they are the same = win
 }
 
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', (e) => {
-    // console.log(button.textContent)
-    if (e.target.tagName === 'button');
-            if (button.textContent === "q") {
-                console.log(button.textContent)
-            console.log("Hello World is this a letter");
+    const pButton = e.target;
+    let selectedChar = pButton.textContent;
+ 
+   // need to update the below only for buttons, this and logic picking up div's!
+    
+    if (pButton.tagName === 'button');
+        pButton.classList.add('chosen');
+        // console.log(selectedChar + " qwerty area");
+        let checkedLetter = checkLetter(selectedChar);
+            if ( checkedLetter === selectedChar ) {
+                console.log("you got a letter")
             } else {
-                console.log("get wrecked")
+                console.log("Wrong letter in Event Listener" + selectedChar)
+                missedLetter +=1
+                // code here to remove a heart
             }
     });
