@@ -76,11 +76,10 @@ const checkWin = () => {
     console.log(letterNum.length);
     let showNum = document.getElementsByClassName('show')
     console.log(showNum.length);
-    if (letterNum === showNum) {
+    if (letterNum.length === showNum.length) {
         console.log("I win!!!");
-    }
-
-    if (missedLetter > 4) {
+    
+    } else if (missedLetter > 4) {
         overlay.classList.add('lose');
         overlay.style.display = "flex";
         h2.textContent = "Sorry, you lose. Refresh the browser to play again!";
