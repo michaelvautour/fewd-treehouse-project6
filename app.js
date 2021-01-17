@@ -1,4 +1,5 @@
 console.log('app.js in project 6 test')
+// const qwerty = document.getElementsByClassName('keyrow');
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const ul = document.querySelector('ul')
@@ -79,18 +80,16 @@ const checkWin = () => {
 qwerty.addEventListener('click', (e) => {
     const pButton = e.target;
     let selectedChar = pButton.textContent;
- 
-   // need to update the below only for buttons, this and logic picking up div's!
-    
-    if (pButton.tagName === 'button');
+   
+    if (pButton.tagName === "BUTTON" && pButton.classList != "chosen") {
         pButton.classList.add('chosen');
-        // console.log(selectedChar + " qwerty area");
         let checkedLetter = checkLetter(selectedChar);
             if ( checkedLetter === selectedChar ) {
-                console.log("you got a letter")
+                console.log("you got a letter");
             } else {
-                console.log("Wrong letter in Event Listener" + selectedChar)
-                missedLetter +=1
+                console.log("Wrong letter in Event Listener" + selectedChar);
+                missedLetter +=1;
                 // code here to remove a heart
             }
-    });
+}
+});
