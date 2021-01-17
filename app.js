@@ -3,13 +3,14 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const ul = document.querySelector('ul')
 const gameStart = document.querySelector('.btn__reset');
+const button = document.getElementsByTagName('button')
 
 const phrases = [
-"Tomorrow is going to be amazing",
-"What shall we ever do",
-"Battlestar Galactica is a great show",
-"Whatever works for you",
-"Hello World is simple but effective"
+"We are the children of humanity",
+"Barely competent and paranoid",
+"Battlestar galactica",
+"You keep my planes flying",
+"So say we all"
 ];
 
 missedLetter = 0;
@@ -53,9 +54,19 @@ function addPhraseToDisplay() {
 
 // check if a letter is in the phrase
 function checkLetter() {
-    console.log("whatever");
+    let match = null;
+    const letters = ul.children;
+    console.log(letters);
+    for (i = 0; i < letters.length; i++) {
+        let letter = letters[i];
+        console.log(letter);
+        if ("s" | "a" === letter.textContent ){
+            letter.classList.add('show');
+            match = letter.textContent;
+            return match;
+        }
+    }
 }
-
 
 // check if the game has been won or lost 
 const checkWin = () => {
@@ -64,10 +75,12 @@ const checkWin = () => {
 
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', (e) => {
-    let match = null;
-    let button = get('button')
-    if (e.target.tagName == 'button');
-            if (button.textContent = "q") {
-            console.log("Hello World");
+    // console.log(button.textContent)
+    if (e.target.tagName === 'button');
+            if (button.textContent === "q") {
+                console.log(button.textContent)
+            console.log("Hello World is this a letter");
+            } else {
+                console.log("get wrecked")
             }
     });
