@@ -164,3 +164,21 @@ button {
 .lose a {
   color: var(--color-lose);
 }
+
+@media screen and (max-width: 768px) {
+
+  h2 {
+    font-size: 15px;
+  }
+
+button {
+  margin: 1px;
+  padding: .5rem;
+}
+
+.letter {
+  height: 25px;
+  width: 25px;
+  padding: 1px 1px 0 1px;
+}
+}
