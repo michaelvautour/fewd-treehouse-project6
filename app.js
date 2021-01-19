@@ -4,6 +4,7 @@ const ul = document.querySelector('ul')
 const gameStart = document.querySelector('.btn__reset');
 const button = document.getElementsByTagName('button');
 const heartLoss = document.querySelectorAll("img");
+const tries = document.getElementsByClassName('tries');
 const overlay = document.getElementById('overlay');
 const h2 = document.getElementsByClassName('title')[0];
 //Game questions, add/edit additional ones as needed
@@ -44,8 +45,7 @@ const resetGame = () => {
     document.getElementById('overlay').style.display = 'none';
     missedLetter = 0;
     indexOfPhrase = 0;
-    // h2.className = '';
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < tries.length; i++) {
         heartLoss[i].src="images/liveHeart.png";
     }
     for (i = 0; i < button.length; i++) {
@@ -54,7 +54,6 @@ const resetGame = () => {
     }
     addPhraseToDisplay();
     phraseLineBreak();
-
 }
 
 //returns a random phrase from an array for the game
